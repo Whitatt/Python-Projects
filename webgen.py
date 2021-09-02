@@ -13,21 +13,28 @@ def load_gui(self):
 
     def Submit(self):
         txt=self.entry1.get()
-        f = open(webbrowser)
+        f = open('test.html','w')
 
         message = """
         <html>
             <body>
-                <h1>"""+txt+"""</h1>
+                <h1>%s</h1>
             </body>
-        </html>"""
+        </html>"""%txt
         
         f.write(message)
         f.close()
-        webbrowser.open_new_tab('')
+        webbrowser.open_new_tab('test.html')
+
+    def callback():
+
+        tk.Button(root, text="Demo Button",command=callback)
         
 
+        
 
+        
+    
 class ParentWindow(Frame):
     def __init__(self, master, *args, **kwargs):
         Frame.__init__(self, master, *args, **kwargs)
