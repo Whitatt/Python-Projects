@@ -26,9 +26,7 @@ def load_gui(self):
         f.close()
         webbrowser.open_new_tab('test.html')
 
-    def callback():
-
-        tk.Button(root, text="Demo Button",command=callback)
+        self.txt_button=tk.Button(self.master,width=20,height=2,text='Open HTML file', command=lambda:Submit(self))
         
 
         
