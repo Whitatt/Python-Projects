@@ -1,5 +1,7 @@
 import tkinter as tk
 from tkinter import filedialog
+import os
+import shutil
 
 root=tk.Tk()
 
@@ -15,18 +17,23 @@ destination_var=tk.StringVar()
 
 def ChooseSource():
     src = filedialog.askdirectory()
-    
+    source_entry.insert(0,src)
+
+def ChooseDest():
+    dest = filedialog.askdirectory()
+    destination_entry.insert(0,dest)
 
 def submit():#defining a function that will get source/dest and print on screen
+    source = source_entry.get()
+    dest = destination_entry.get()
+    filelist = os.listdir(source)
 
-    source=source_var.get()
-    destination=destination_var.get()
+    for file in filelist:
+        fullpath = source+"/"+file
 
-    print("The source is : " + source)
-    print("The destination is : " + destination)
+        shutil.move(fullpath,dest)
 
-    source_var.set()
-    destination_var.set()
+    
 
 source_label = tk.Label(root, text = 'Source', font=('calibre',10, 'bold'))#creating label for source 
 
@@ -34,10 +41,10 @@ source_entry = tk.Entry(root,textvariable = source_var, font=('calibre',10,'norm
 
 destination_label = tk.Label(root, text = 'Destination', font = ('calibre',10,'bold'))
   
-destination_entry=tk.Entry(root, textvariable = destination_var, font = ('calibre',10,'normal'), show = '*')
+destination_entry=tk.Entry(root, textvariable = destination_var, font = ('calibre',10,'normal'))
 
-sub_btn=tk.Button(root,text = 'Select Source', command = submit)#creating button widget
-sub_btn1=tk.Button(root,text = 'Select Destination', command = submit)
+sub_btn=tk.Button(root,text = 'Select Source', command = ChooseSource)#creating button widget
+sub_btn1=tk.Button(root,text = 'Select Destination', command = ChooseDest)
 sub_btn2=tk.Button(root,text = 'Select Transfer', command = submit)
         
 
