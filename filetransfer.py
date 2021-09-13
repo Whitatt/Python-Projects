@@ -12,7 +12,7 @@ for i in files:
     #we are saying move the files represented by 'i' to their new destination
     shutil.move(source+i, destination)
 
-    #Importing shutil and time package
+    #Importing shutil
 import shutil
 try:
     print("Copying File")
